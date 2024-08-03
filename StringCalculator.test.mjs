@@ -15,4 +15,8 @@ describe('StringCalculator', () => {
   it('should return the number itself for a single number', () => {
     expect(calculator.add("1")).to.equal(1);
   });
+
+  it('should return the sum for two numbers', () => {
+    expect(calculator.add("1,2")).to.equal(3);
+  });
 });
