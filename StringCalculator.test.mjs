@@ -31,4 +31,12 @@ describe('StringCalculator', () => {
   it('should support different delimiters', () => {
     expect(calculator.add("//;\n1;2")).to.equal(3);
   });
+
+  it('should throw an error for negative numbers', () => {
+    expect(() => calculator.add("1,-2,3")).to.throw('negative numbers not allowed: -2');
+  });
+  
+  it('should list all negative numbers in the error message', () => {
+    expect(() => calculator.add("1,-2,-3")).to.throw('negative numbers not allowed: -2, -3');
+  });
 });
