@@ -17,19 +17,19 @@ describe('StringCalculator', () => {
   });
 
   it('should return the sum for two numbers', () => {
-    expect(calculator.add("1,2")).to.equal(3);
+    expect(calculator.add("1,2")).to.equal(1);
   });
 
   it('should return the sum for multiple numbers', () => {
-    expect(calculator.add("1,2,3")).to.equal(6);
+    expect(calculator.add("1,2,3")).to.equal(4);
   });
 
   it('should handle new lines between numbers', () => {
-    expect(calculator.add("1\n2,3")).to.equal(6);
+    expect(calculator.add("1\n2,3")).to.equal(4);
   });
 
   it('should support different delimiters', () => {
-    expect(calculator.add("//;\n1;2")).to.equal(3);
+    expect(calculator.add("//;\n1;2")).to.equal(1);
   });
 
   it('should throw an error for negative numbers', () => {
@@ -39,4 +39,9 @@ describe('StringCalculator', () => {
   it('should list all negative numbers in the error message', () => {
     expect(() => calculator.add("1,-2,-3")).to.throw('negative numbers not allowed: -2, -3');
   });
+
+  it('should ignore alternate numbers', () => {
+    expect(calculator.add("2,4,6")).to.equal(8)
+    expect(calculator.add("1,2,3,4")).to.equal(4)
+  })
 });

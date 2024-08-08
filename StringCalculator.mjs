@@ -17,7 +17,9 @@ class StringCalculator {
       throw new Error(`negative numbers not allowed: ${negatives.join(', ')}`);
     }
 
-    return numList.reduce((sum, num) => sum + num, 0);
+    const alternateNums = numList.filter((num, i) => i%2 === 0)
+
+    return alternateNums.reduce((sum, num) => sum + num, 0);
   }
 }
 
